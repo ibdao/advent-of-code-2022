@@ -1,5 +1,4 @@
 const { readFileSync, promises: fsPromises } = require("fs");
-const { parse } = require("path");
 
 /** Function to read a file and parse contents into a javascript array.
  *  Splits file items line by line into elements of an array.
