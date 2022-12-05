@@ -34,29 +34,19 @@ function findOverlapping(){
             && parseInt(newPairs[1][1]) >= parseInt(newPairs[0][0])){
             count++;
         }
-
-        // let compareInterval = (newPairs) => newPairs[1][0] - newPairs[0][0];
-
-        // let isOverlap = (arr) => {
-        //     arr.sort(compareInterval);
-        //     return arr[1][1] <= arr[0][1];
-       
-        // }
-
-        // if (isOverlap(newPairs)){
-        //     console.log(newPairs);
-        //     count++; 
-        // }
     }
 
     return count;
 }
+
+/** Helper function that splits each assignment betwwen the two elves. */
 
 function parsePairs(pair){
     let pairs = pair.split(',');
     return pairs
 }
 
+/** Helper function that gets the start and end of each section. */
 function changeStringPairToList(pair){
     let arr = pair.split('-');
     return arr;
