@@ -36,10 +36,19 @@ function moveCratesAndUpdateStacks(direction){
     let from = STACKS[+direction[1] - 1];
     let to = STACKS[+direction[2] - 1]; 
 
+    let crates = []; 
+
     for(let i = 0; i < quantity; i++){
         let crate = from.pop();
-        to.push(crate);
+        /** Part 1: 
+         *  Remove: lines 39, 47 & 51
+         *  Add: to.push(crate);
+         */
+        crates.push(crate); 
+
     }
+
+    to.push(...crates.reverse());
 
     STACKS[direction[1] - 1] = from;
     STACKS[direction[2] - 1] = to;
