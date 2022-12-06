@@ -13,6 +13,19 @@ function syncReadFile(filename) {
   return arr;
 }
 
+/**
+ *  Explanation and Approach:
+ *  My goal here was to look at the smallest window of characters then check for duplicate characters in that window
+ *  
+ *  For Part 1 the window was 4 characters long. 
+ *  I would find my window, if the window contained duplicates, 
+ *  I would add the next character from the input and move my window to the right once and reevaluate for duplicates. 
+ *  If there are no duplicates I want to return the position of the character. 
+ * 
+ *  For Part 2, the approach is the same but now the window is 14 characters long instead of 4. 
+ * 
+ */
+
 function tuningTrouble(){
     let input = syncReadFile('./Day-06-input.txt'); 
     let letters = input[0].split(''); 
