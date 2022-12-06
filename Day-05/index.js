@@ -83,7 +83,20 @@ function getDirections(){
     return numbersOnly;
 }
 
-/** Main function that moves crates and returns the top crates of each stack */
+/** Main function that moves crates and returns the top crates of each stack 
+ * Explanation and Approach: 
+ * I want to parse out the information from the original input 
+ * so that I just have the numbers in the format: [quantity to be moved, move from stack, move to stack]
+ * 
+ * Next I want to select the stack using the index of STACKS
+ * pop() the last item from that stack and push() onto the move to stack. 
+ * 
+ * Lastly I want to get the last item in every stack (this would be the top crate in every stack)
+ * 
+ * Part 2 involves similar thinking but this time we can move multiple crates at once. 
+ * To implement this, I added an array that will be moved from the stacks. 
+ * 
+*/
 function supplyStacks(){
     let directions = getDirections(); 
 
