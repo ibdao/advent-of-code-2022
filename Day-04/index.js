@@ -13,6 +13,16 @@ function syncReadFile(filename) {
   return arr;
 }
 
+/**
+ * Explanation and Approach: 
+ * My goal here was to parse the original input so that I just pairs of the sections 
+ * Next I wanted to see if one pair completely includes the other by seeing if the first pair contains the second pair
+ * And then see if the second pair contains the first pair. 
+ * 
+ * For Part 2, we just want to see if they overlap such that either section touches the boundaries of the other. 
+ * 
+ */
+
 function findOverlapping(){
     let input = syncReadFile('./Day-04-input.txt');
     let count = 0;
