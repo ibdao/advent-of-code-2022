@@ -35,13 +35,10 @@ function syncReadFile(filename) {
 function findVisibleTrees(){
     let input = syncReadFile('./Day-08-input.txt');
     let grid = input.map(line => line.split('').map(n => parseInt(n)));
-    // let visible = 0;
-
-    let highestScore = 0;
+    let visible = 0;
 
     /**
      * Part 2: find scenic score
-     * 
      * 
      */
 
@@ -49,79 +46,60 @@ function findVisibleTrees(){
         for (let j = 0; j < grid[0].length; j++){
             let height = grid[i][j]; 
 
-            // let north = exploreNorth([i - 1, j], grid, height);
-            // let south = exploreSouth([i + 1, j], grid, height);
-            // let east = exploreEast([i, j + 1], grid, height);
-            // let west = exploreWest([i, j - 1], grid, height);
-
             let north = exploreNorth([i - 1, j], grid, height);
             let south = exploreSouth([i + 1, j], grid, height);
             let east = exploreEast([i, j + 1], grid, height);
             let west = exploreWest([i, j - 1], grid, height);
 
-            let score = north * east * west * south;
-            highestScore = Math.max(highestScore, score); 
-            
+            if (north || south || east || west) visible++;
         }
     }
-    return highestScore;
 
-    // return visible;
+    return visible;
 }
 
-function exploreNorth(pos, grid, height, ){
+function exploreNorth(pos, grid, height){
     let [x, y] = pos;
 
-    if (x < 0 || x >= grid.length) return  + 1;
-    if (y < 0 || y >= grid.length) return  + 1;
+    if (x < 0 || x >= grid.length) return true;
+    if (y < 0 || y >= grid.length) return true;
 
-    if (grid[x][y] >= height){
-        return ;
-    } else {
-        return 1 + exploreNorth([x - 1, y], grid, height, );
-    }
+    if (grid[x][y] >= height) return false; 
 
+    return exploreNorth([x - 1, y], grid, height);
     
 }
 
-function exploreSouth(pos, grid, height, ){
+function exploreSouth(pos, grid, height){
     let [x, y] = pos;
-    if (x < 0 || x >= grid.length) return  + 1;
-    if (y < 0 || y >= grid.length) return  + 1;
+    if (x < 0 || x >= grid.length) return true;
+    if (y < 0 || y >= grid.length) return true;
 
-    if (grid[x][y] >= height){
-        return ;
-    } else {
-        return 1 + exploreSouth([x + 1, y], grid, height, );
-    }
+    if (grid[x][y] >= height) return false; 
+
+    return exploreSouth([x + 1, y], grid, height);
     
 }
 
-function exploreEast(pos, grid, height, ){
+function exploreEast(pos, grid, height){
     let [x, y] = pos;
-    if (x < 0 || x >= grid.length) return  + 1;
-    if (y < 0 || y >= grid.length) return  + 1;
+    if (x < 0 || x >= grid.length) return true;
+    if (y < 0 || y >= grid.length) return true;
 
-    if (grid[x][y] >= height){
-        return ;
-    } else {
-        return 1 + exploreEast([x, y + 1], grid, height, );
-    } 
+    if (grid[x][y] >= height) return false; 
 
+    return exploreEast([x, y + 1], grid, height);
     
 }
 
-function exploreWest(pos, grid, height, ){
+function exploreWest(pos, grid, height){
     let [x, y] = pos;
-    if (x < 0 || x >= grid.length) return  + 1;
-    if (y < 0 || y >= grid.length) return  + 1;
+    if (x < 0 || x >= grid.length) return true;
+    if (y < 0 || y >= grid.length) return true;
 
-    if (grid[x][y] >= height) {
-        return;
-    } else {
-        return 1 + exploreWest([x, y - 1], grid, height, trees);
-    } 
+    if (grid[x][y] >= height) return false; 
 
+    return exploreWest([x, y - 1], grid, height);
     
 }
 
