@@ -1,17 +1,4 @@
-const { readFileSync, promises: fsPromises } = require("fs");
-
-/** Function to read a file and parse contents into a javascript array.
- *  Splits file items line by line into elements of an array.
- *
- *  an empty line will show up as '' element in the array.
- */
-function syncReadFile(filename) {
-  const contents = readFileSync(filename, "utf-8");
-
-  const arr = contents.split(/\r?\n/);
-
-  return arr;
-}
+const { getInput } = require("../input.js");
 
 /** Starting Stack of Crates */
 
@@ -73,7 +60,7 @@ function getTopCrates(stacks){
  * [quantity to be moved, stack to move from, stack to move to]
  */
 function getDirections(){
-    let input = syncReadFile('./Day-05-input.txt'); 
+    let input = getInput('./Day-05-input.txt'); 
     let numbersOnly = [];
     for (let direction of input){
         let numbers = direction.split(' ').filter(n => isNaN(+n) === false);

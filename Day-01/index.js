@@ -1,18 +1,4 @@
-const { readFileSync, promises: fsPromises } = require("fs");
-
-
-/** Function to read a file and parse contents into a javascript array. 
- *  Splits file items line by line into elements of an array. 
- * 
- *  an empty line will show up as '' element in the array. 
- */
-function syncReadFile(filename) {
-  const contents = readFileSync(filename, "utf-8");
-
-  const arr = contents.split(/\r?\n/);
-
-  return arr;
-}
+const { getInput } = require("../input.js");
 
 
 /** Function that creates a javascript object to represent the elf : calories
@@ -21,7 +7,7 @@ function syncReadFile(filename) {
  * 
  */
 function createElfToTotalCalories(filename) {
-  let calories = syncReadFile(filename);
+  let calories = getInput(filename);
   let totals = {};
   let sum = 0;
   let elf = 1;

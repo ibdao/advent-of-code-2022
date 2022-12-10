@@ -1,17 +1,4 @@
-const { readFileSync, promises: fsPromises } = require("fs");
-
-/** Function to read a file and parse contents into a javascript array.
- *  Splits file items line by line into elements of an array.
- *
- *  an empty line will show up as '' element in the array.
- */
-function syncReadFile(filename) {
-  const contents = readFileSync(filename, "utf-8");
-
-  const arr = contents.split(/\r?\n/);
-
-  return arr;
-}
+const { getInput } = require("../input.js");
 
 /**
  *  Explanation and Approach:
@@ -27,7 +14,7 @@ function syncReadFile(filename) {
  */
 
 function tuningTrouble(){
-    let input = syncReadFile('./Day-06-input.txt'); 
+    let input = getInput('./Day-06-input.txt'); 
     let letters = input[0].split(''); 
 
     let start = 3;

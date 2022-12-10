@@ -1,27 +1,13 @@
-const { readFileSync, promises: fsPromises } = require("fs");
-
-/** Function to read a file and parse contents into a javascript array.
- *  Splits file items line by line into elements of an array.
- *
- *  an empty line will show up as '' element in the array.
- */
-function syncReadFile(filename) {
-  const contents = readFileSync(filename, "utf-8");
-
-  const arr = contents.split(/\r?\n/);
-
-  return arr;
-}
+const { getInput } = require("../input.js");
 
 function ropeBridge(){
-    let input = syncReadFile('./Day-09-input.txt');
+    let input = getInput('./Day-09-input.txt');
     let visited = new Set();
 
     let head = {x : 0, y : 0, oldX : 0, oldY : 0};
     let tail = {x : 0, y : 0};
 
     for (let line of input){
-        console.log(line);
         let [direction, steps]= line.split(' ');
 
         for (let i = 0; i < parseInt(steps); i++){

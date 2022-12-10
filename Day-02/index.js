@@ -1,17 +1,4 @@
-const { readFileSync, promises: fsPromises } = require("fs");
-
-/** Function to read a file and parse contents into a javascript array.
- *  Splits file items line by line into elements of an array.
- *
- *  an empty line will show up as '' element in the array.
- */
-function syncReadFile(filename) {
-  const contents = readFileSync(filename, "utf-8");
-
-  const arr = contents.split(/\r?\n/);
-
-  return arr;
-}
+const { getInput } = require("../input.js");
 
 
 /** Calculates total score for x amount of rounds. 
@@ -37,7 +24,7 @@ function calculateScore(){
 	let totalScore = 0;
 
 	// Creates an array of rounds of RPS with elf
-	let rounds = syncReadFile('./Day-02-input.txt');
+	let rounds = getInput('./Day-02-input.txt');
 
 	for (let round of rounds){
 		let elf = round[0];

@@ -1,21 +1,8 @@
-const { readFileSync, promises: fsPromises } = require("fs");
-
-/** Function to read a file and parse contents into a javascript array.
- *  Splits file items line by line into elements of an array.
- *
- *  an empty line will show up as '' element in the array.
- */
-function syncReadFile(filename) {
-  const contents = readFileSync(filename, "utf-8");
-
-  const arr = contents.split(/\r?\n/);
-
-  return arr;
-}
+const { getInput } = require("../input.js");
 
 function rucksackPriorites() {
 	let sum = 0;
-  let ruckSacksArr = syncReadFile("./Day-03-input.txt");
+  let ruckSacksArr = getInput("./Day-03-input.txt");
 
   for (let ruckSack of ruckSacksArr) {
     let compartment1 = ruckSack.slice(0, ruckSack.length / 2);
