@@ -14,7 +14,7 @@ function monkeyInTheMiddle() {
 	let counts = [];
 	
 	/** 1 round is going through all the monkeys once */
-	while(rounds < 20){
+	while(rounds < 10000){
 		for (let monkey in monkeys){
 			let items = monkeys[monkey]['startingItems'];
 
@@ -48,24 +48,25 @@ function inspectItem(item, monkeys, monkeyNum){
 	let test = monkeys[monkeyNum]['Test'].split(' ');
 	
 	// Original worry level
-	let worryLevel = parseInt(item);
+	let worryLevel = BigInt(item);
 
 	let number = (expression[expression.length - 1] === 'old') 
-	? parseInt(worryLevel)
-	: parseInt(expression[expression.length - 1]);
+	? BigInt(worryLevel)
+	: BigInt(expression[expression.length - 1]);
 	
 	// Worry level is increased
 	let monkeyInspects = doMath(operation, worryLevel, number);
 	
 	// Worry level is decreased
-	let monkeyBored = parseInt(monkeyInspects /= 3);
+	//let monkeyBored = BigInt(monkeyInspects /= 3);
 
-	let divideBy = parseInt(test[test.length - 1]);
+	let divideBy = BigInt(test[test.length - 1]);
 	
-	let passed = (monkeyBored % divideBy === 0) ? true : false;
+	//let passed = (monkeyBored % divideBy === 0) ? true : false;
+	let passed = (monkeyInspects % divideBy === 0) ? true : false;
 	let toMonkey = monkeys[monkeyNum][passed];
 	
-	monkeys[toMonkey]['startingItems'].push(monkeyBored);
+	monkeys[toMonkey]['startingItems'].push(BigInt(monkeyInspects));
 }
 
 /** Helper function */
