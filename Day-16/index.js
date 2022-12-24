@@ -14,32 +14,29 @@ function createMap(){
     for (let line of input){
         valves[line.slice(6,8)] = {
             'rate': parseInt(line.split('=')[1].split(';')[0]), 
-            'valve': line.split('to')[1].split(' ').filter(item => item !== '' && item !== 'valve' && item !== 'valves').map(n => n.slice(0,2))}
+            'valve': line.split('to')[1].split(' ').filter(item => item !== '' && item !== 'valve' && item !== 'valves').map(n => n.slice(0,2)),
+            'status': 'closed'
+        }
     }
     return valves  
 }
 
 function openValves(){
     let valves = createMap();
-    let time = 1;
-    let flow = 0;
-    let visited = new Set();
-    let stack = [ Object.keys(valves).reverse().pop() ];
-
-    while (time < 30){
+    // we have a map of the valves with their rates, connecting valves and status
+    let stack = [ valves[Object.keys(valves)[0]] ]
+    let i = 0
+    while (i < 30){
         let curr = stack.pop();
 
-        console.log(curr, valves[curr]);
-
-        let nextValve = valves[curr].valve.shift();
-        stack.push(nextValve);
-
-        visited.add(curr);
-
-        time += 2;
+        if (curr.rate > 0){
+            curr.status = 'opened'
+        }
+        
+    
     }
 
-    return flow;
+    return curr;
 
 }
 
